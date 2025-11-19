@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://cnmdwn5j70ujc"]
+
+[ext_resource type="PackedScene" uid="uid://5ogm0nrdtmlj" path="res://entities/testCharacter/test_character.tscn" id="1_0ve8y"]
+[ext_resource type="Script" uid="uid://b3oo6fjep1pjh" path="res://zones/battle_zone.gd" id="1_4l0ca"]
+[ext_resource type="Texture2D" uid="uid://bi1j6pdw3lli7" path="res://textures/goegap_4k.exr" id="2_kpkgm"]
+[ext_resource type="Script" uid="uid://crfjefvs273ll" path="res://zones/player.gd" id="2_n3raf"]
+[ext_resource type="Script" uid="uid://da3b1kc3pk8hx" path="res://zones/ui.gd" id="3_qve4a"]
+[ext_resource type="PackedScene" uid="uid://cvp8etmqovc2u" path="res://zones/stick.tscn" id="3_udala"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_n3raf"]
+size = Vector2(10, 10)
+orientation = 1
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_n3raf"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mdfvn"]
+panorama = ExtResource("2_kpkgm")
+
+[sub_resource type="Sky" id="Sky_qf4ax"]
+sky_material = SubResource("PanoramaSkyMaterial_mdfvn")
+
+[sub_resource type="Environment" id="Environment_56muf"]
+background_mode = 2
+sky = SubResource("Sky_qf4ax")
+
+[node name="battle_zone" type="Node3D"]
+script = ExtResource("1_4l0ca")
+
+[node name="level" type="Node3D" parent="."]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="level"]
+mesh = SubResource("QuadMesh_n3raf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="level"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_n3raf")
+
+[node name="World" type="Node3D" parent="level"]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="level/World"]
+environment = SubResource("Environment_56muf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="level/World"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.70710677, 0, -0.7071068, 0.70710677, 0, 6.756875, 0)
+directional_shadow_blend_splits = true
+
+[node name="player" type="Node3D" parent="."]
+process_mode = 3
+script = ExtResource("2_n3raf")
+
+[node name="Camera3D" type="Camera3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 8, 8)
+projection = 1
+size = 7.6363225
+
+[node name="characters" type="Node3D" parent="."]
+
+[node name="Team1" type="Node3D" parent="characters"]
+
+[node name="testCharacter" parent="characters/Team1" instance=ExtResource("1_0ve8y")]
+
+[node name="testCharacter2" parent="characters/Team1" instance=ExtResource("1_0ve8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5213736, 0, 0.0377388)
+
+[node name="testCharacter3" parent="characters/Team1" instance=ExtResource("1_0ve8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82900786, -2.3841858e-07, 1.6485195)
+
+[node name="testCharacter4" parent="characters/Team1" instance=ExtResource("1_0ve8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6625896, 0, 0.1006732)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.80200005
+anchor_top = 0.64400005
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.095947266
+offset_top = -0.31204224
+offset_right = -37.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(191, 191)
+script = ExtResource("3_qve4a")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stick" parent="UI/AspectRatioContainer" instance=ExtResource("3_udala")]
+layout_mode = 2
+
+[connection signal="valueChanged" from="UI/AspectRatioContainer/Stick" to="player" method="_on_stick_value_changed"]
