@@ -70,7 +70,7 @@ hit_back_faces = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5213736, 0, 0.0377388)
 
 [node name="testCharacter3" parent="characters/Team1" instance=ExtResource("4_yld5r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82900786, -2.3841858e-07, 1.6485195)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3738518, -7.1525574e-07, 0.93831015)
 
 [node name="testCharacter4" parent="characters/Team1" instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6625896, 0, 0.1006732)
