@@ -2,12 +2,13 @@ extends Node3D
 
 var selectedCharacter: Node3D
 
-@onready var player_team: Node3D = $"../characters/Team1"
+@onready var player_team: Node3D = $"../teams".get_child(0)
 @onready var ui: Control = $"../UI"
 @onready var battle_zone: Node3D = $".."
 @onready var cam: Camera3D = $Camera3D
 @onready var ray: RayCast3D = $RayCast3D
 
+signal characterChanged(char: Character)
 
 func _process(_delta: float) -> void:
 	if  Input.is_action_just_pressed("ui_accept"):
@@ -54,3 +55,7 @@ func _on_stick_value_changed(value: Vector2) -> void:
 	if  selectedCharacter:
 		selectedCharacter.target_direction = value
 		selectedCharacter.speedStrength = value.length()
+		
+func _on_ability_changed(ability: Ability_resource) ->void:
+	if  selectedCharacter:
+		selectedCharacter.activeAbility = ability

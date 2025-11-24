@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability_resource" load_steps=3 format=3 uid="uid://c7ag8ktph7k3b"]
+
+[ext_resource type="Texture2D" uid="uid://w2076j4mkane" path="res://icon.svg" id="1_hytrf"]
+[ext_resource type="Script" uid="uid://bnm4hv6ov5wib" path="res://resources/abilities/abilityResource.gd" id="2_mbhis"]
+
+[resource]
+script = ExtResource("2_mbhis")
+Name = "test"
+Icon = ExtResource("1_hytrf")
+Indicator = ExtResource("1_hytrf")
+TurnSpeed = 1.0
+MoveSpeed = 8.0
+metadata/_custom_type_script = "uid://bnm4hv6ov5wib"

@@ -50,3 +50,6 @@ func get_value() -> Vector2:
 
 func set_values(dir: Vector2) -> void:
 	value = dir
+
+func _on_character_changed(char: Character) -> void:
+	pass

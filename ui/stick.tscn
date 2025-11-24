@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvp8etmqovc2u"]
 
 [ext_resource type="Texture2D" uid="uid://kk43kvb4f0r6" path="res://textures/circle-dot-svgrepo-com.svg" id="1_ejdbc"]
-[ext_resource type="Script" uid="uid://cebfbkcm588ja" path="res://zones/stick.gd" id="1_vs1mt"]
+[ext_resource type="Script" uid="uid://cebfbkcm588ja" path="res://ui/stick.gd" id="1_vs1mt"]
 [ext_resource type="Texture2D" uid="uid://dcajpuedukiqn" path="res://textures/circle-svgrepo-com.svg" id="2_vs1mt"]
 
 [node name="Stick" type="Control"]

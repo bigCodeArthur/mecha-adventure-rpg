@@ -1,11 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnmdwn5j70ujc"]
+[gd_scene load_steps=17 format=3 uid="uid://cnmdwn5j70ujc"]
 
 [ext_resource type="Script" uid="uid://b3oo6fjep1pjh" path="res://zones/battle_manager.gd" id="1_0a47a"]
 [ext_resource type="Texture2D" uid="uid://bi1j6pdw3lli7" path="res://textures/goegap_4k.exr" id="2_j3lx3"]
 [ext_resource type="Script" uid="uid://crfjefvs273ll" path="res://zones/player.gd" id="3_oduoj"]
 [ext_resource type="PackedScene" uid="uid://5ogm0nrdtmlj" path="res://entities/testCharacter/test_character.tscn" id="4_yld5r"]
-[ext_resource type="Script" uid="uid://da3b1kc3pk8hx" path="res://zones/ui.gd" id="5_06wj7"]
-[ext_resource type="PackedScene" uid="uid://cvp8etmqovc2u" path="res://zones/stick.tscn" id="6_6mu6g"]
+[ext_resource type="Script" uid="uid://da3b1kc3pk8hx" path="res://ui/ui.gd" id="5_06wj7"]
+[ext_resource type="Script" uid="uid://bnm4hv6ov5wib" path="res://resources/abilities/abilityResource.gd" id="5_oduoj"]
+[ext_resource type="PackedScene" uid="uid://cvp8etmqovc2u" path="res://ui/stick.tscn" id="6_6mu6g"]
+[ext_resource type="Resource" uid="uid://cj5nmhip05tv6" path="res://resources/abilities/walk.tres" id="6_yld5r"]
+[ext_resource type="Resource" uid="uid://c7ag8ktph7k3b" path="res://resources/abilities/run.tres" id="7_yld5r"]
+[ext_resource type="Resource" uid="uid://du0afwkbfk1fy" path="res://resources/abilities/sneak.tres" id="8_06wj7"]
+[ext_resource type="Script" uid="uid://buoxuwyuvd8dj" path="res://ui/scripts/abilities_menu.gd" id="10_6mu6g"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_n3raf"]
 size = Vector2(10, 10)
@@ -60,23 +65,28 @@ target_position = Vector3(0, 0, 0)
 collision_mask = 8
 hit_back_faces = false
 
-[node name="characters" type="Node3D" parent="."]
+[node name="teams" type="Node3D" parent="."]
 
-[node name="Team1" type="Node3D" parent="characters"]
+[node name="Team1" type="Node3D" parent="teams"]
 
-[node name="testCharacter" parent="characters/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter" parent="teams/Team1" instance=ExtResource("4_yld5r")]
+abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("7_yld5r"), ExtResource("8_06wj7")])
 
-[node name="testCharacter2" parent="characters/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter2" parent="teams/Team1" instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5213736, 0, 0.0377388)
+abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("7_yld5r")])
 
-[node name="testCharacter3" parent="characters/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter3" parent="teams/Team1" instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3738518, -7.1525574e-07, 0.93831015)
+abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r")])
 
-[node name="testCharacter4" parent="characters/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter4" parent="teams/Team1" instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6625896, 0, 0.1006732)
+abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("8_06wj7")])
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -94,6 +104,7 @@ offset_left = -0.28800964
 offset_top = -228.23999
 offset_right = -0.36010742
 offset_bottom = -4.23999
+script = ExtResource("10_6mu6g")
 
 [node name="Stick" parent="UI" instance=ExtResource("6_6mu6g")]
 layout_mode = 1
