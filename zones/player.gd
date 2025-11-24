@@ -11,8 +11,7 @@ var selectedCharacter: Node3D
 
 func _process(_delta: float) -> void:
 	if  Input.is_action_just_pressed("ui_accept"):
-		get_tree().paused = false
-		ui.stick.usable = false
+		get_owner().PLAY()
 		selectCharacter(selectedCharacter, null)
 
 
@@ -34,7 +33,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func selectCharacter(prev_character: Node3D, character: Node3D) ->void:
-	print("prev:", prev_character, "char", character)
 	if  prev_character == character:
 		return
 
@@ -56,5 +54,3 @@ func _on_stick_value_changed(value: Vector2) -> void:
 	if  selectedCharacter:
 		selectedCharacter.target_direction = value
 		selectedCharacter.speedStrength = value.length()
-	else:
-		print("select a character")
