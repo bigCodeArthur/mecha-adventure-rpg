@@ -14,3 +14,7 @@ config/name="mecha-jrpg"
 run/main_scene="uid://cnmdwn5j70ujc"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=2

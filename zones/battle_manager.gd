@@ -6,17 +6,21 @@ var allCharacters: Array[Node]
 var unlockedPlayers: int = 0
 
 func PLAY() -> void:
-	pass
+	ui.stick.usable = false
+	get_tree().paused = false
 
 func PAUSE() -> void:
-	pass
+	ui.stick.usable = true
+	get_tree().paused = true
+
 
 func _ready() -> void:
+	PAUSE()
 	for team in characters.get_children():
 		for character in team.get_children():
 			allCharacters.append(character)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	for character in allCharacters:
 		if character.actionLock <= 0:
 			unlockedPlayers += 1
@@ -24,5 +28,4 @@ func _physics_process(delta: float) -> void:
 			character.actionLock -= 1
 
 	if unlockedPlayers > 0:
-		get_tree().paused = true
-		ui.stick.usable = true
+		PAUSE()
