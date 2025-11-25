@@ -11,6 +11,9 @@ var activeAbility : Ability_resource = null
 
 @onready var direction_indicator: Node3D = $DirectionIndicator
 
+func _ready() -> void:
+	activeAbility = abilities[0]
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
