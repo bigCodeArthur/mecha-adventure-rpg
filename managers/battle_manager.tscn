@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnmdwn5j70ujc"]
+
+[ext_resource type="Script" uid="uid://b3oo6fjep1pjh" path="res://managers/battle_manager.gd" id="1_0a47a"]
+[ext_resource type="PackedScene" uid="uid://bkt7rhc11kewp" path="res://levels/test_level.tscn" id="2_tjm5b"]
+[ext_resource type="PackedScene" uid="uid://bsqhu3665r1yi" path="res://entities/PlayerController/player.tscn" id="3_6o8l0"]
+[ext_resource type="PackedScene" uid="uid://5ogm0nrdtmlj" path="res://entities/testCharacter/test_character.tscn" id="4_yld5r"]
+[ext_resource type="Script" uid="uid://bnm4hv6ov5wib" path="res://resources/abilities/abilityResource.gd" id="5_oduoj"]
+[ext_resource type="Resource" uid="uid://cj5nmhip05tv6" path="res://resources/abilities/walk.tres" id="6_yld5r"]
+[ext_resource type="Resource" uid="uid://c7ag8ktph7k3b" path="res://resources/abilities/run.tres" id="7_yld5r"]
+[ext_resource type="Resource" uid="uid://du0afwkbfk1fy" path="res://resources/abilities/sneak.tres" id="8_06wj7"]
+[ext_resource type="PackedScene" uid="uid://btfh3b3ccmukk" path="res://ui/ui.tscn" id="9_yld5r"]
+
+[node name="Battle_manager" type="Node3D"]
+script = ExtResource("1_0a47a")
+
+[node name="TestLevel" parent="." instance=ExtResource("2_tjm5b")]
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("3_6o8l0")]
+
+[node name="Teams" type="Node3D" parent="."]
+
+[node name="Team1" type="Node3D" parent="Teams"]
+
+[node name="testCharacter" parent="Teams/Team1" instance=ExtResource("4_yld5r")]
+abilities = Array[ExtResource("5_oduoj")]([ExtResource("7_yld5r"), ExtResource("6_yld5r"), ExtResource("8_06wj7"), ExtResource("7_yld5r")])
+
+[node name="testCharacter2" parent="Teams/Team1" instance=ExtResource("4_yld5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5213736, 0, 0.0377388)
+abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("7_yld5r")])
+
+[node name="testCharacter3" parent="Teams/Team1" instance=ExtResource("4_yld5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3738518, -7.1525574e-07, 0.93831015)
+abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r")])
+
+[node name="testCharacter4" parent="Teams/Team1" instance=ExtResource("4_yld5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6625896, 0, 0.1006732)
+abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("8_06wj7")])
+
+[node name="UI" parent="." instance=ExtResource("9_yld5r")]
+
+[connection signal="characterChanged" from="Player" to="UI" method="_on_player_character_changed"]

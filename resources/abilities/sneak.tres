@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_ednbc")
+Name = "sneak"
 Icon = ExtResource("1_s3rp1")
 Indicator = ExtResource("1_s3rp1")
 TurnSpeed = 8.0

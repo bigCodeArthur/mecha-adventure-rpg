@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://8tvyckawwfgv"]
+[gd_scene load_steps=4 format=3 uid="uid://btfh3b3ccmukk"]
 
-[ext_resource type="Script" uid="uid://da3b1kc3pk8hx" path="res://ui/ui.gd" id="1_68fm0"]
-[ext_resource type="Script" uid="uid://buoxuwyuvd8dj" path="res://ui/scripts/abilities_menu.gd" id="2_p8tw5"]
-[ext_resource type="Texture2D" uid="uid://w2076j4mkane" path="res://icon.svg" id="3_c1ren"]
+[ext_resource type="Script" uid="uid://da3b1kc3pk8hx" path="res://ui/scripts/ui.gd" id="1_68fm0"]
+[ext_resource type="PackedScene" uid="uid://b05msrpckl12t" path="res://ui/abilities_menu.tscn" id="3_wl5ax"]
 [ext_resource type="PackedScene" uid="uid://cvp8etmqovc2u" path="res://ui/stick.tscn" id="4_07frj"]
 
 [node name="UI" type="Control"]
@@ -14,78 +13,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_68fm0")
 
-[node name="ActionsMenu" type="FlowContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.21900001
-anchor_top = 1.005
-anchor_right = 0.80500007
-anchor_bottom = 1.005
-offset_left = -0.28800964
-offset_top = -228.23999
-offset_right = -0.36010742
-offset_bottom = -4.23999
-script = ExtResource("2_p8tw5")
-
-[node name="Button" type="Button" parent="ActionsMenu"]
-layout_mode = 2
-icon = ExtResource("3_c1ren")
-flat = true
-autowrap_mode = 3
-icon_alignment = 1
-
-[node name="Button2" type="Button" parent="ActionsMenu"]
-layout_mode = 2
-icon = ExtResource("3_c1ren")
-flat = true
-autowrap_mode = 3
-icon_alignment = 1
-
-[node name="Button3" type="Button" parent="ActionsMenu"]
-layout_mode = 2
-icon = ExtResource("3_c1ren")
-flat = true
-autowrap_mode = 3
-icon_alignment = 1
-
-[node name="Button4" type="Button" parent="ActionsMenu"]
-layout_mode = 2
-icon = ExtResource("3_c1ren")
-flat = true
-autowrap_mode = 3
-icon_alignment = 1
-
-[node name="Button5" type="Button" parent="ActionsMenu"]
-layout_mode = 2
-icon = ExtResource("3_c1ren")
-flat = true
-autowrap_mode = 3
-icon_alignment = 1
-
-[node name="Button6" type="Button" parent="ActionsMenu"]
-layout_mode = 2
-icon = ExtResource("3_c1ren")
-flat = true
-autowrap_mode = 3
-icon_alignment = 1
-
-[node name="Button7" type="Button" parent="ActionsMenu"]
-layout_mode = 2
-icon = ExtResource("3_c1ren")
-flat = true
-autowrap_mode = 3
-icon_alignment = 1
-
 [node name="Stick" parent="." instance=ExtResource("4_07frj")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.80500007
+anchor_left = 0.82600003
 anchor_top = 1.0
-anchor_right = 0.80500007
+anchor_right = 0.82600003
 anchor_bottom = 1.0
-offset_left = 17.639893
-offset_top = -206.0
-offset_right = 208.6399
-offset_bottom = -15.0
+offset_left = -0.552063
+offset_top = -200.0
+offset_right = 199.44794
+offset_bottom = 0.12799072
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="AbilitiesMenu" parent="." instance=ExtResource("3_wl5ax")]
+layout_mode = 1
+anchor_left = 0.0
+anchor_right = 0.82600003
+offset_right = -0.552063
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="valueChanged" from="Stick" to="." method="_on_stick_value_changed"]
+[connection signal="abilityChanged" from="AbilitiesMenu" to="." method="_on_abilities_menu_ability_changed"]

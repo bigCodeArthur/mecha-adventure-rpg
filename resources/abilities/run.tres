@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_mbhis")
-Name = "test"
+Name = "run"
 Icon = ExtResource("1_hytrf")
 Indicator = ExtResource("1_hytrf")
 TurnSpeed = 1.0

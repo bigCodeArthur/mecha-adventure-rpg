@@ -1,6 +1,6 @@
 class_name Character extends CharacterBody3D
 
-const FORWARD: Vector3 = Vector3(0, 0, -1)
+const FORWARD : Vector3 = Vector3(0, 0, -1)
 
 var speedStrength : float
 var target_direction: Vector2
@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	rotation.y += clamp(angle_wrapped, -smooth_step, smooth_step)
 
 	var direction := (transform.basis * FORWARD).normalized()
+
 	if  direction:
 		velocity.x = direction.x * activeAbility.MoveSpeed * speedStrength
 		velocity.z = direction.z * activeAbility.MoveSpeed * speedStrength

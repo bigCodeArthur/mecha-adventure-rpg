@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkt7rhc11kewp"]
+
+[ext_resource type="Texture2D" uid="uid://bi1j6pdw3lli7" path="res://textures/goegap_4k.exr" id="1_46lwt"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_n3raf"]
+size = Vector2(10, 10)
+orientation = 1
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_n3raf"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mdfvn"]
+panorama = ExtResource("1_46lwt")
+
+[sub_resource type="Sky" id="Sky_qf4ax"]
+sky_material = SubResource("PanoramaSkyMaterial_mdfvn")
+
+[sub_resource type="Environment" id="Environment_56muf"]
+background_mode = 2
+sky = SubResource("Sky_qf4ax")
+
+[node name="TestLevel" type="Node3D"]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_n3raf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_n3raf")
+
+[node name="World" type="Node3D" parent="."]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_56muf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.70710677, 0, -0.7071068, 0.70710677, 0, 6.756875, 0)
+directional_shadow_blend_splits = true
