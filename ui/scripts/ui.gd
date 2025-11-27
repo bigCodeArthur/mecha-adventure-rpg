@@ -1,6 +1,6 @@
-extends Control
+class_name PlayerUI extends Control
 
-@onready var stick: Control = $Stick
+@onready var stick: Stick = $Stick
 @onready var abilities_menu: AbilitiesMenu = $AbilitiesMenu
 
 var selectedCharacter : Character

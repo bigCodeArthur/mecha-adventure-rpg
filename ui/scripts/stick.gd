@@ -41,6 +41,12 @@ func _gui_input(event: InputEvent) -> void:
 
 
 #helpers
+func reset() -> void:
+	value = Vector2.ZERO
+	update_knob()
+	usable = false
+
+
 func is_within_base(pos: Vector2) -> bool:
 	return (pos - center).length() <= (radius)
 

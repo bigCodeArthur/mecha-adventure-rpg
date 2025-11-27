@@ -1,11 +1,12 @@
-extends Node3D
+class_name Player extends Node3D
 
-var selectedCharacter: Node3D
-@onready var player_team: Node3D = $"../TeamManager".get_child(0)
-@onready var ui: Control = $"../UI"
-@onready var battle_zone: Node3D = $".."
-@onready var cam: Camera3D = $Camera3D
-@onready var ray: RayCast3D = $RayCast3D
+var selectedCharacter : Node3D
+
+@onready var player_team : Team = $"../TeamManager".get_player_team()
+@onready var ui : Control = $"../UI"
+@onready var battle_zone : Node3D = $".."
+@onready var cam : Camera3D = $Camera3D
+@onready var ray : RayCast3D = $RayCast3D
 
 signal characterChanged(char: Character)
 
@@ -32,10 +33,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func selectCharacter(prev_character: Character, character: Character) ->void:
+	if character is not Character and character != null:
+		return
+
 	if  prev_character == character:
 		return
 
-	if prev_character != null:
+	if  prev_character != null:
 		prev_character.deselect()
 
 	if  character != null:
@@ -43,3 +47,6 @@ func selectCharacter(prev_character: Character, character: Character) ->void:
 		emit_signal("characterChanged", character)
 		ui.stick.usable = true
 		selectedCharacter = character
+
+func deselect() -> void:
+	selectCharacter(selectedCharacter, null)

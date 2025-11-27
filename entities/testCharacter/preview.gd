@@ -1,23 +1,33 @@
-class_name Character extends CharacterBody3D
-
-var actionLock : int
-
-var speedStrength : float
-var target_direction: Vector2
-var activeAbility : Ability_resource = null
-
-@export  var abilities : Array[Ability_resource]
-
-@onready var direction_indicator: Node3D = $DirectionIndicator
-@onready var preview: CharacterBody3D = $preview
+extends CharacterBody3D
+@onready var main : Character = $".."
 @onready var visual : MeshInstance3D = $MeshInstance3D
 
-func _ready() -> void:
-	activeAbility = abilities[0]
-	actionLock = activeAbility.AnimationFrameLock
+var activeAbility : Ability_resource
+var target_direction : Vector2
+var speedStrength : float
+
+var frameToReset : int
+var frame : int = 0
+
+func reset() -> void:
+	position = Vector3.ZERO
+	rotation = main.rotation
+	velocity = main.velocity
+
+	activeAbility = main.activeAbility
+	target_direction = main.target_direction
+	speedStrength = main.speedStrength
+
+	frame = 0
+	frameToReset = main.activeAbility.AnimationFrameLock
 
 
 func _physics_process(delta: float) -> void:
+	if frame >= frameToReset:
+		reset()
+	else:
+		frame += 1
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -33,24 +43,12 @@ func _physics_process(delta: float) -> void:
 	rotation.y += clamp(angle_wrapped, -smooth_step, smooth_step)
 
 	var direction := (transform.basis * Vector3.FORWARD).normalized()
+
 	if  direction:
 		velocity.x = direction.x * activeAbility.MoveSpeed * speedStrength
 		velocity.z = direction.z * activeAbility.MoveSpeed * speedStrength
 	else:
 		velocity.x = move_toward(velocity.x, 0, activeAbility.MoveSpeed * speedStrength)
 		velocity.z = move_toward(velocity.z, 0, activeAbility.MoveSpeed * speedStrength)
- 
+
 	move_and_slide()
-
-
-func select():
-	direction_indicator.selected = true
-	direction_indicator.visible = true
-	preview.visual.mesh = visual.mesh
-	preview.visible = true
-
-
-func deselect():
-	direction_indicator.selected = false
-	direction_indicator.visible = false
-	preview.visible = false

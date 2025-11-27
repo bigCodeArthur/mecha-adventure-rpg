@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ability_resource" load_steps=3 format=3 uid="uid://cj5nmhip05tv6"]
+[gd_resource type="Resource" script_class="Ability_resource" load_steps=3 format=3 uid="uid://cj5nmhip05tv6"]
 
 [ext_resource type="Texture2D" uid="uid://w2076j4mkane" path="res://icon.svg" id="1_eipdy"]
 [ext_resource type="Script" uid="uid://bnm4hv6ov5wib" path="res://resources/abilities/abilityResource.gd" id="2_c4pgp"]
@@ -8,4 +8,6 @@ script = ExtResource("2_c4pgp")
 Name = "walk"
 Icon = ExtResource("1_eipdy")
 Indicator = ExtResource("1_eipdy")
+TurnSpeed = 6.0
+AnimationFrameLock = 30
 metadata/_custom_type_script = "uid://bnm4hv6ov5wib"

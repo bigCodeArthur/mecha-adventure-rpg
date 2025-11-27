@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://5ogm0nrdtmlj"]
+[gd_scene load_steps=11 format=3 uid="uid://5ogm0nrdtmlj"]
 
 [ext_resource type="Script" uid="uid://db6a5yy5wos0l" path="res://entities/testCharacter/testCharacter.gd" id="1_as2mo"]
 [ext_resource type="Script" uid="uid://d18g4nxvhsj04" path="res://entities/testCharacter/direction_indicator.gd" id="2_5mie4"]
+[ext_resource type="Script" uid="uid://dyix34w36wall" path="res://entities/testCharacter/preview.gd" id="3_ylme8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qqebx"]
 radius = 0.25
@@ -23,8 +24,11 @@ height = 0.03
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylme8"]
 albedo_color = Color(0.44313726, 1, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqoyw"]
+albedo_color = Color(0.58431375, 1, 1, 0.6392157)
+
 [node name="testCharacterBody" type="CharacterBody3D"]
-collision_layer = 9
+collision_layer = 8
 script = ExtResource("1_as2mo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -48,3 +52,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5mie4")
 [node name="Selection" type="MeshInstance3D" parent="DirectionIndicator"]
 mesh = SubResource("CylinderMesh_5mie4")
 surface_material_override/0 = SubResource("StandardMaterial3D_ylme8")
+
+[node name="preview" type="CharacterBody3D" parent="."]
+process_mode = 3
+visible = false
+collision_layer = 0
+script = ExtResource("3_ylme8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="preview"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_qqebx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="preview"]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_udala")
+surface_material_override/0 = SubResource("StandardMaterial3D_tqoyw")

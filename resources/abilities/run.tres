@@ -8,6 +8,6 @@ script = ExtResource("2_mbhis")
 Name = "run"
 Icon = ExtResource("1_hytrf")
 Indicator = ExtResource("1_hytrf")
-TurnSpeed = 1.0
 MoveSpeed = 8.0
+AnimationFrameLock = 30
 metadata/_custom_type_script = "uid://bnm4hv6ov5wib"
