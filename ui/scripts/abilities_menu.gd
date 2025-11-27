@@ -2,7 +2,8 @@
 
 class_name AbilitiesMenu extends ScrollContainer
 
-const button = preload("uid://bf0171xrtjenr")
+const BUTTON = preload("uid://bf0171xrtjenr")
+
 @onready var abilities: HFlowContainer = $FlowContainer
 
 signal abilityChanged(ability: Ability_resource)
@@ -20,13 +21,7 @@ func character_changed(character: Character) -> void:
 		return
 
 	for ability in character.abilities:
-		var newButton = button.new()
-		newButton.icon = ability.Icon
-		newButton.ability = ability
-		newButton.text = ability.Name
-		
-		print(newButton.ability.Name)
-		abilities.add_child(newButton)
+		abilities.add_child(BUTTON.new(ability))
 
 
 func changeAbility(ability: Ability_resource) -> void:

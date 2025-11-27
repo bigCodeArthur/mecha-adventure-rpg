@@ -18,22 +18,23 @@ transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.70710
 
 [node name="Player" parent="." instance=ExtResource("3_6o8l0")]
 
-[node name="Teams" type="Node3D" parent="."]
+[node name="TeamManager" type="Node3D" parent="."]
 
-[node name="Team1" type="Node3D" parent="Teams"]
+[node name="Team1" type="Node3D" parent="TeamManager"]
 
-[node name="testCharacter" parent="Teams/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter" parent="TeamManager/Team1" instance=ExtResource("4_yld5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46667075, -4.7683716e-07, -0.92762995)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("7_yld5r"), ExtResource("6_yld5r"), ExtResource("8_06wj7"), ExtResource("7_yld5r")])
 
-[node name="testCharacter2" parent="Teams/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter2" parent="TeamManager/Team1" instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5213736, 0, 0.0377388)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("7_yld5r")])
 
-[node name="testCharacter3" parent="Teams/Team1" instance=ExtResource("4_yld5r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3738518, -7.1525574e-07, 0.93831015)
+[node name="testCharacter3" parent="TeamManager/Team1" instance=ExtResource("4_yld5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7815168, -7.1525574e-07, 1.9201792)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r")])
 
-[node name="testCharacter4" parent="Teams/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter4" parent="TeamManager/Team1" instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6625896, 0, 0.1006732)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("8_06wj7")])
 

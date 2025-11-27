@@ -3,7 +3,7 @@ extends Node3D
 var allCharacters: Array[Node]
 var unlockedPlayers: int = 0
 
-@onready var teams: Node3D = $Teams
+@onready var teams: Node3D = $TeamManager
 @onready var ui: Control = $UI
 
 
@@ -27,7 +27,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	unlockedPlayers = 0
 	for character in allCharacters:
-		if character.actionLock > 0:
+		if  character.actionLock > 0:
 			character.actionLock -= 1
 		else:
 			unlockedPlayers += 1

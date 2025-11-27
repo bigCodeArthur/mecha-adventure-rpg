@@ -1,7 +1,7 @@
 extends Node3D
 
 var selectedCharacter: Node3D
-@onready var player_team: Node3D = $"../Teams".get_child(0)
+@onready var player_team: Node3D = $"../TeamManager".get_child(0)
 @onready var ui: Control = $"../UI"
 @onready var battle_zone: Node3D = $".."
 @onready var cam: Camera3D = $Camera3D
