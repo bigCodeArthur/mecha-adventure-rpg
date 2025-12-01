@@ -7,4 +7,4 @@ class_name Ability_resource extends Resource
 @export var PlayAnimation : String = ""
 @export var TurnSpeed : float = 3.0
 @export var MoveSpeed : float = 3.0
-@export var AnimationFrameLock : int = 100
+@export var AnimationFrameLock : int = 30

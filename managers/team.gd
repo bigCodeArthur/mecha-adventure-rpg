@@ -1,6 +1,6 @@
 class_name Team extends Node3D
 
-var characters : Array[Character] = get_characters()
+@onready var characters : Array[Character] = get_characters()
 
 func get_characters() -> Array[Character]:
 	var output : Array[Character]

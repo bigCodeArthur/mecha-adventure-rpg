@@ -6,6 +6,7 @@
 
 [node name="Stick" type="Control"]
 process_mode = 3
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 50.0

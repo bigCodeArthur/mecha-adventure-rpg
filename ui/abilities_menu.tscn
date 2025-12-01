@@ -2,19 +2,22 @@
 
 [ext_resource type="Script" uid="uid://buoxuwyuvd8dj" path="res://ui/scripts/abilities_menu.gd" id="1_d5nv5"]
 
-[node name="AbilitiesMenu" type="ScrollContainer"]
-clip_contents = false
-anchors_preset = -1
-anchor_left = 0.215
-anchor_top = 1.0
-anchor_right = 0.832
-anchor_bottom = 1.0
-offset_top = -200.0
-offset_right = 0.53601074
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
 script = ExtResource("1_d5nv5")
 
-[node name="FlowContainer" type="HFlowContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FlowContainer" type="HFlowContainer" parent="ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3

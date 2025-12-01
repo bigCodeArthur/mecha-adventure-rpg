@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://btfh3b3ccmukk"]
+[gd_scene load_steps=5 format=3 uid="uid://btfh3b3ccmukk"]
 
 [ext_resource type="Script" uid="uid://da3b1kc3pk8hx" path="res://ui/scripts/ui.gd" id="1_68fm0"]
 [ext_resource type="PackedScene" uid="uid://b05msrpckl12t" path="res://ui/abilities_menu.tscn" id="3_wl5ax"]
 [ext_resource type="PackedScene" uid="uid://cvp8etmqovc2u" path="res://ui/stick.tscn" id="4_07frj"]
+[ext_resource type="Script" uid="uid://cijmuh05hvnnq" path="res://ui/play_button.gd" id="4_vkava"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_68fm0")
 
 [node name="Stick" parent="." instance=ExtResource("4_07frj")]
@@ -29,11 +31,30 @@ grow_vertical = 0
 
 [node name="AbilitiesMenu" parent="." instance=ExtResource("3_wl5ax")]
 layout_mode = 1
-anchor_left = 0.0
-anchor_right = 0.82600003
-offset_right = -0.552063
-grow_horizontal = 1
-grow_vertical = 1
+anchors_preset = -1
+anchor_left = 0.20500001
+anchor_top = 0.989
+anchor_right = 0.80600005
+anchor_bottom = 0.989
+offset_left = -0.16001892
+offset_top = -192.87201
+offset_right = -0.51208496
+offset_bottom = 0.12799072
+
+[node name="Play_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.046000004
+anchor_top = 1.0
+anchor_right = 0.14500001
+anchor_bottom = 1.0
+offset_left = 0.0079956055
+offset_top = -139.0
+offset_right = -0.040008545
+offset_bottom = -66.0
+text = "PLAY
+"
+script = ExtResource("4_vkava")
 
 [connection signal="valueChanged" from="Stick" to="." method="_on_stick_value_changed"]
 [connection signal="abilityChanged" from="AbilitiesMenu" to="." method="_on_abilities_menu_ability_changed"]

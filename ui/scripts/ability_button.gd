@@ -1,12 +1,12 @@
 class_name AbilityButton extends Button
 
-var ability : Ability_resource
+@export var ability : Ability_resource
 
 @onready var menu = get_owner()
 
 
 func _init(abilityInput : Ability_resource) -> void:
-	flat = true
+	flat = false
 	icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 
 	ability = abilityInput

@@ -23,5 +23,6 @@ func get_all_characters() -> Array[Character]:
 
 	return output
 
+
 func get_player_team() -> Team:
 	return get_teams()[0]

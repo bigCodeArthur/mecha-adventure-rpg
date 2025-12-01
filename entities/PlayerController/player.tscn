@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bsqhu3665r1yi"]
 
-[ext_resource type="Script" uid="uid://crfjefvs273ll" path="res://managers/player.gd" id="1_eqibs"]
+[ext_resource type="Script" uid="uid://crfjefvs273ll" path="res://entities/PlayerController/player.gd" id="1_eqibs"]
 
 [node name="Player" type="Node3D"]
 process_mode = 3

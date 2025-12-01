@@ -4,17 +4,11 @@ var selectedCharacter : Node3D
 
 @onready var player_team : Team = $"../TeamManager".get_player_team()
 @onready var ui : Control = $"../UI"
-@onready var battle_zone : Node3D = $".."
+@onready var battle_manager : BattleManager = $".."
 @onready var cam : Camera3D = $Camera3D
 @onready var ray : RayCast3D = $RayCast3D
 
 signal characterChanged(char: Character)
-
-
-func _process(_delta: float) -> void:
-	if  Input.is_action_just_pressed("ui_accept"):
-		get_owner().PLAY()
-		selectCharacter(selectedCharacter, null)
 
 
 func _unhandled_input(event: InputEvent) -> void:
