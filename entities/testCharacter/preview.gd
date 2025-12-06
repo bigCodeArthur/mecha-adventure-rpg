@@ -1,30 +1,25 @@
 class_name Preview extends Character
-@onready var main : Character = $".."
+
+@onready var main : Character_main = $".."
 
 var frameToReset : int
 var frame : int = 0
+
 
 func reset() -> void:
 	position = Vector3.ZERO
 	rotation = main.rotation
 	velocity = main.velocity
 
-	activeAbility = main.activeAbility
+	activeAbility    = main.activeAbility
 	target_direction = main.target_direction
-	speedStrength = main.speedStrength
+	speedStrength    = main.speedStrength
 
 	frame = 0
-	if activeAbility:
-		frameToReset = activeAbility.AnimationFrameLock
+	if activeAbility: frameToReset = activeAbility.AnimationFrameLock
 
 
 func _physics_process(delta: float) -> void:
-	if frame >= frameToReset:
-		reset()
-	else:
-		frame += 1
-
-	super._physics_process(delta)
-
-func select():
-	pass
+	if frame >= frameToReset: reset()
+	else: frame += 1
+	super(delta)

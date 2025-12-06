@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnmdwn5j70ujc"]
+[gd_scene load_steps=13 format=3 uid="uid://cnmdwn5j70ujc"]
 
 [ext_resource type="Script" uid="uid://b3oo6fjep1pjh" path="res://managers/battle_manager.gd" id="1_0a47a"]
 [ext_resource type="PackedScene" uid="uid://bkt7rhc11kewp" path="res://levels/test_level.tscn" id="2_tjm5b"]
@@ -11,6 +11,33 @@
 [ext_resource type="Resource" uid="uid://c7ag8ktph7k3b" path="res://resources/abilities/run.tres" id="7_yld5r"]
 [ext_resource type="Resource" uid="uid://du0afwkbfk1fy" path="res://resources/abilities/sneak.tres" id="8_06wj7"]
 [ext_resource type="PackedScene" uid="uid://btfh3b3ccmukk" path="res://ui/ui.tscn" id="9_yld5r"]
+
+[sub_resource type="GDScript" id="GDScript_j6lmd"]
+script/source = "extends CharacterBody3D
+
+
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+
+
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	var input_dir := Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
+"
 
 [node name="Battle_manager" type="Node3D"]
 script = ExtResource("1_0a47a")
@@ -63,5 +90,8 @@ transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.70710
 
 [node name="UI" parent="." instance=ExtResource("9_yld5r")]
 process_mode = 3
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = SubResource("GDScript_j6lmd")
 
 [connection signal="characterChanged" from="Player" to="UI" method="_on_player_character_changed"]

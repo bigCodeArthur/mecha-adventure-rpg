@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://5ogm0nrdtmlj"]
 
-[ext_resource type="Script" uid="uid://db6a5yy5wos0l" path="res://entities/testCharacter/testCharacter.gd" id="1_as2mo"]
+[ext_resource type="Script" uid="uid://cffly0bpx0crj" path="res://entities/testCharacter/character_main.gd" id="1_tqoyw"]
 [ext_resource type="Script" uid="uid://d18g4nxvhsj04" path="res://entities/testCharacter/direction_indicator.gd" id="2_5mie4"]
 [ext_resource type="Script" uid="uid://dyix34w36wall" path="res://entities/testCharacter/preview.gd" id="3_ylme8"]
 [ext_resource type="Script" uid="uid://cad0fqooan566" path="res://entities/testCharacter/infoLabel.gd" id="5_ubvle"]
@@ -28,9 +28,9 @@ albedo_color = Color(0.44313726, 1, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqoyw"]
 albedo_color = Color(0.58431375, 1, 1, 0.6392157)
 
-[node name="testCharacterBody" type="CharacterBody3D"]
+[node name="Character_template" type="CharacterBody3D"]
 collision_layer = 8
-script = ExtResource("1_as2mo")
+script = ExtResource("1_tqoyw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -56,7 +56,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ylme8")
 
 [node name="preview" type="CharacterBody3D" parent="."]
 process_mode = 3
-visible = false
 collision_layer = 0
 script = ExtResource("3_ylme8")
 
