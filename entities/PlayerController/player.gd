@@ -1,6 +1,7 @@
 class_name Player extends Node3D
 
 var selectedCharacter : Node3D
+var rng = RandomNumberGenerator.new()
 
 @onready var player_team : Team = $"../TeamManager".get_player_team()
 @onready var ui : Control = $"../UI"
@@ -9,6 +10,27 @@ var selectedCharacter : Node3D
 @onready var ray : RayCast3D = $RayCast3D
 
 signal characterChanged(char: Character)
+
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cut"):
+		for team in battle_manager.teamManager.get_children():
+			for child in team.get_children():
+				if child is not Character_main: continue
+				var character : Character_main = child
+				character.set_active_ability(
+					character.abilities[
+						rng.randi_range(0, 
+						len(character.abilities) - 1)
+					]
+				)
+				
+				character.target_direction = Vector2(
+					rng.randf_range(-1, 1), 
+					rng.randf_range(-1, 1)
+				).normalized()
+				
+				character.speedStrength = rng.randf_range(0, 1)
 
 
 func _unhandled_input(event: InputEvent) -> void:

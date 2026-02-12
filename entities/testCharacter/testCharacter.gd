@@ -11,6 +11,11 @@ var activeAbility    : Ability_resource = null
 @onready var visual : MeshInstance3D = $MeshInstance3D
 
 
+func set_color(color: Color):
+	var material : StandardMaterial3D = visual.mesh.material
+	material.albedo_color = color
+
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta

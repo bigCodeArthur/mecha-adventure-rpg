@@ -1,4 +1,6 @@
 extends Label3D
+
+
 @onready var body: Character_main = $".."
 
 

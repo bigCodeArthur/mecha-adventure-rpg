@@ -5,7 +5,6 @@ class_name Character_main extends Character
 @onready var active_ability_indicator = $ActiveAbilityIndicator
 @onready var label_3d = $Label3D
 
-
 func select() -> void:
 	direction_indicator.selected = true
 	direction_indicator.visible  = true

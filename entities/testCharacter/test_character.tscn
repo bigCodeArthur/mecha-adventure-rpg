@@ -1,15 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://5ogm0nrdtmlj"]
+[gd_scene format=3 uid="uid://5ogm0nrdtmlj"]
 
 [ext_resource type="Script" uid="uid://cffly0bpx0crj" path="res://entities/testCharacter/character_main.gd" id="1_tqoyw"]
 [ext_resource type="Script" uid="uid://d18g4nxvhsj04" path="res://entities/testCharacter/direction_indicator.gd" id="2_5mie4"]
 [ext_resource type="Script" uid="uid://dyix34w36wall" path="res://entities/testCharacter/preview.gd" id="3_ylme8"]
 [ext_resource type="Script" uid="uid://cad0fqooan566" path="res://entities/testCharacter/infoLabel.gd" id="5_ubvle"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qqebx"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tqoyw"]
 radius = 0.25
 height = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubvle"]
+resource_local_to_scene = true
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_udala"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ubvle")
 radius = 0.25
 height = 1.0
 
@@ -25,54 +30,60 @@ height = 0.03
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylme8"]
 albedo_color = Color(0.44313726, 1, 1, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qqebx"]
+radius = 0.25
+height = 1.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqoyw"]
 albedo_color = Color(0.58431375, 1, 1, 0.6392157)
 
-[node name="Character_template" type="CharacterBody3D"]
+[node name="Character_template" type="CharacterBody3D" unique_id=298022574]
 collision_layer = 8
 script = ExtResource("1_tqoyw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2059936952]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CapsuleShape3D_qqebx")
+shape = SubResource("CapsuleShape3D_tqoyw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2004220539]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("CapsuleMesh_udala")
 
-[node name="DirectionIndicator" type="Node3D" parent="."]
+[node name="DirectionIndicator" type="Node3D" parent="." unique_id=1010890823]
 process_mode = 3
 script = ExtResource("2_5mie4")
 
-[node name="Pointer" type="MeshInstance3D" parent="DirectionIndicator"]
+[node name="Pointer" type="MeshInstance3D" parent="DirectionIndicator" unique_id=1957978354]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.5, -0.5)
 mesh = SubResource("PrismMesh_as2mo")
 skeleton = NodePath("../../MeshInstance3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_5mie4")
 
-[node name="Selection" type="MeshInstance3D" parent="DirectionIndicator"]
+[node name="Selection" type="MeshInstance3D" parent="DirectionIndicator" unique_id=344385662]
 mesh = SubResource("CylinderMesh_5mie4")
 surface_material_override/0 = SubResource("StandardMaterial3D_ylme8")
 
-[node name="preview" type="CharacterBody3D" parent="."]
+[node name="preview" type="CharacterBody3D" parent="." unique_id=1937437769]
 process_mode = 3
+visible = false
 collision_layer = 0
 script = ExtResource("3_ylme8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="preview"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="preview" unique_id=424986897]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_qqebx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="preview"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="preview" unique_id=2086172748]
 transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0.5, 0)
 mesh = SubResource("CapsuleMesh_udala")
 surface_material_override/0 = SubResource("StandardMaterial3D_tqoyw")
 
-[node name="ActiveAbilityIndicator" type="Sprite3D" parent="."]
+[node name="ActiveAbilityIndicator" type="Sprite3D" parent="." unique_id=757177031]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.1857709, 0)
 billboard = 1
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Label3D" type="Label3D" parent="." unique_id=2138711018]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4230196, 0)
 billboard = 1
 text = "test"

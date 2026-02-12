@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnmdwn5j70ujc"]
+[gd_scene format=3 uid="uid://cnmdwn5j70ujc"]
 
 [ext_resource type="Script" uid="uid://b3oo6fjep1pjh" path="res://managers/battle_manager.gd" id="1_0a47a"]
 [ext_resource type="PackedScene" uid="uid://bkt7rhc11kewp" path="res://levels/test_level.tscn" id="2_tjm5b"]
@@ -12,86 +12,58 @@
 [ext_resource type="Resource" uid="uid://du0afwkbfk1fy" path="res://resources/abilities/sneak.tres" id="8_06wj7"]
 [ext_resource type="PackedScene" uid="uid://btfh3b3ccmukk" path="res://ui/ui.tscn" id="9_yld5r"]
 
-[sub_resource type="GDScript" id="GDScript_j6lmd"]
-script/source = "extends CharacterBody3D
-
-
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-
-
-func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	var input_dir := Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
-	move_and_slide()
-"
-
-[node name="Battle_manager" type="Node3D"]
+[node name="Battle_manager" type="Node3D" unique_id=1537054888]
 script = ExtResource("1_0a47a")
 
-[node name="TeamManager" type="Node3D" parent="."]
+[node name="TeamManager" type="Node3D" parent="." unique_id=1545546149]
 script = ExtResource("4_6o8l0")
 
-[node name="Team1" type="Node3D" parent="TeamManager"]
+[node name="Team1" type="Node3D" parent="TeamManager" unique_id=304253796]
 script = ExtResource("5_j6lmd")
+team_color = Color(1, 1, 1, 1)
 
-[node name="testCharacter" parent="TeamManager/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter" parent="TeamManager/Team1" unique_id=1301780709 instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6660751, -4.7683716e-07, 3.1375098)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("7_yld5r"), ExtResource("6_yld5r"), ExtResource("8_06wj7"), ExtResource("7_yld5r")])
 
-[node name="testCharacter2" parent="TeamManager/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter2" parent="TeamManager/Team1" unique_id=1358902374 instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.098833, 0, 3.1728568)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("7_yld5r"), ExtResource("8_06wj7")])
 
-[node name="testCharacter3" parent="TeamManager/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter3" parent="TeamManager/Team1" unique_id=194980635 instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61890984, -7.1525574e-07, 3.131794)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r")])
 
-[node name="testCharacter4" parent="TeamManager/Team1" instance=ExtResource("4_yld5r")]
+[node name="testCharacter4" parent="TeamManager/Team1" unique_id=1561422959 instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0851302, 0, 3.2357912)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("8_06wj7")])
 
-[node name="Team2" type="Node3D" parent="TeamManager"]
+[node name="Team2" type="Node3D" parent="TeamManager" unique_id=1158894396]
 script = ExtResource("5_j6lmd")
+team_color = Color(0, 0, 0, 1)
 
-[node name="testCharacter" parent="TeamManager/Team2" instance=ExtResource("4_yld5r")]
+[node name="testCharacter" parent="TeamManager/Team2" unique_id=1276875097 instance=ExtResource("4_yld5r")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.635641, -4.7683716e-07, -2.837811)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("7_yld5r"), ExtResource("6_yld5r"), ExtResource("8_06wj7"), ExtResource("7_yld5r")])
 
-[node name="testCharacter2" parent="TeamManager/Team2" instance=ExtResource("4_yld5r")]
+[node name="testCharacter2" parent="TeamManager/Team2" unique_id=68485889 instance=ExtResource("4_yld5r")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.068399, 0, -2.8731577)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("7_yld5r"), ExtResource("8_06wj7")])
 
-[node name="testCharacter3" parent="TeamManager/Team2" instance=ExtResource("4_yld5r")]
+[node name="testCharacter3" parent="TeamManager/Team2" unique_id=640019476 instance=ExtResource("4_yld5r")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.64934397, -7.1525574e-07, -2.8320951)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r")])
 
-[node name="testCharacter4" parent="TeamManager/Team2" instance=ExtResource("4_yld5r")]
+[node name="testCharacter4" parent="TeamManager/Team2" unique_id=1553197541 instance=ExtResource("4_yld5r")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.1155643, 0, -2.9360926)
 abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("8_06wj7")])
 
-[node name="TestLevel" parent="." instance=ExtResource("2_tjm5b")]
+[node name="TestLevel" parent="." unique_id=598110411 instance=ExtResource("2_tjm5b")]
 transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 0, 0)
 
-[node name="Player" parent="." instance=ExtResource("3_6o8l0")]
+[node name="Player" parent="." unique_id=1189490327 instance=ExtResource("3_6o8l0")]
 
-[node name="UI" parent="." instance=ExtResource("9_yld5r")]
+[node name="UI" parent="." unique_id=302698178 instance=ExtResource("9_yld5r")]
 process_mode = 3
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-script = SubResource("GDScript_j6lmd")
 
 [connection signal="characterChanged" from="Player" to="UI" method="_on_player_character_changed"]

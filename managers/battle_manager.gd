@@ -24,14 +24,16 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	unlockedPlayers = 0
+	var unlockedCharacters : Array[Character] = []
 
 	for character in allCharacters:
-		if  character.actionLock > 0:
-			character.actionLock -= 1
-		else:
-			unlockedPlayers += 1
+		if  character.actionLock <= 0:
+			unlockedCharacters.append(character)
 			if character.activeAbility:
 				character.actionLock = character.activeAbility.AnimationFrameLock
-
-	if unlockedPlayers > 0:
+		
+	if len(unlockedCharacters) > 0:
 		PAUSE()
+	else:
+		for character in allCharacters:
+			character.actionLock -= 1
