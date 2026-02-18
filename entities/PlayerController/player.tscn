@@ -16,7 +16,7 @@ size = 7.6363225
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=995232294]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.70710665, 0.70710665, 0, -0.70710665, 0.70710665, 0, 5.656853, 5.656853)
+top_level = true
 target_position = Vector3(0, 0, 0)
 collision_mask = 8
 hit_back_faces = false

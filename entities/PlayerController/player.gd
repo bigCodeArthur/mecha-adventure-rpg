@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if  event is InputEventMouseButton and event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.pressed:
-		var mouse_pos = get_viewport().get_mouse_position()
+		var mouse_pos = get_viewport().get_mouse_position() 
 		var from = cam.project_ray_origin(mouse_pos)
 		var dir  = cam.project_ray_normal(mouse_pos)
 		var to   = from + dir * 1000.0

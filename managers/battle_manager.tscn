@@ -20,7 +20,7 @@ script = ExtResource("4_6o8l0")
 
 [node name="Team1" type="Node3D" parent="TeamManager" unique_id=304253796]
 script = ExtResource("5_j6lmd")
-team_color = Color(1, 1, 1, 1)
+team_color = Color(0.20851406, 0.5012633, 0.26270068, 1)
 
 [node name="testCharacter" parent="TeamManager/Team1" unique_id=1301780709 instance=ExtResource("4_yld5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6660751, -4.7683716e-07, 3.1375098)
@@ -40,7 +40,7 @@ abilities = Array[ExtResource("5_oduoj")]([ExtResource("6_yld5r"), ExtResource("
 
 [node name="Team2" type="Node3D" parent="TeamManager" unique_id=1158894396]
 script = ExtResource("5_j6lmd")
-team_color = Color(0, 0, 0, 1)
+team_color = Color(0.6094868, 0.35429394, 0.11197511, 1)
 
 [node name="testCharacter" parent="TeamManager/Team2" unique_id=1276875097 instance=ExtResource("4_yld5r")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.635641, -4.7683716e-07, -2.837811)
