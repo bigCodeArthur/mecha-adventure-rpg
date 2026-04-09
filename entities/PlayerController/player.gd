@@ -9,7 +9,7 @@ var MOUSE_SENSITIVITY = 0.005
 
 @export var team_manager: TeamManager
 @onready var player_team : Team = team_manager.get_player_team()
-@export var ui: Control
+@export var ui: PlayerUI
 @export var battle_manager: BattleManager
 @onready var cam: Camera3D = %Camera3D
 @onready var ray: RayCast3D = %RayCast3D
@@ -56,6 +56,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func move_camera(event: InputEvent):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
+		ui.stick.rot_offset = rotation.y
 		pivot.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		rotation.x = clamp(rotation.x, deg_to_rad(-90), deg_to_rad(90));
 

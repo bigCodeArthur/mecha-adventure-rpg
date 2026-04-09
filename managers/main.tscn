@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://bnm4hv6ov5wib" path="res://resources/abilities/abilityResource.gd" id="5_cvxjk"]
 [ext_resource type="Resource" uid="uid://cj5nmhip05tv6" path="res://resources/abilities/walk.tres" id="6_svw6b"]
 [ext_resource type="Resource" uid="uid://du0afwkbfk1fy" path="res://resources/abilities/sneak.tres" id="7_dyqx8"]
-[ext_resource type="PackedScene" uid="uid://bkt7rhc11kewp" path="res://levels/test_level.tscn" id="8_they0"]
 [ext_resource type="PackedScene" uid="uid://btfh3b3ccmukk" path="res://ui/ui.tscn" id="9_r1lk3"]
+[ext_resource type="PackedScene" uid="uid://du6symxcubq7t" path="res://levels/test_level.tscn" id="10_kblmx"]
 [ext_resource type="PackedScene" uid="uid://bsqhu3665r1yi" path="res://entities/PlayerController/player.tscn" id="10_oia7y"]
 
 [node name="Main" type="Node" unique_id=422167773]
@@ -45,16 +45,16 @@ abilities = Array[ExtResource("5_cvxjk")]([ExtResource("6_svw6b")])
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.71556437, 0, -2.9360926)
 abilities = Array[ExtResource("5_cvxjk")]([ExtResource("6_svw6b"), ExtResource("7_dyqx8")])
 
-[node name="TestLevel" parent="Battle_manager" unique_id=598110411 instance=ExtResource("8_they0")]
-transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 0, 0)
-
-[node name="UI" parent="." unique_id=302698178 node_paths=PackedStringArray("battle_manager") instance=ExtResource("9_r1lk3")]
+[node name="UI" parent="." unique_id=302698178 node_paths=PackedStringArray("battle_manager", "player") instance=ExtResource("9_r1lk3")]
 battle_manager = NodePath("../Battle_manager")
+player = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=1189490327 node_paths=PackedStringArray("team_manager", "ui", "battle_manager") instance=ExtResource("10_oia7y")]
 process_mode = 0
 team_manager = NodePath("../Battle_manager/TeamManager")
 ui = NodePath("../UI")
 battle_manager = NodePath("../Battle_manager")
+
+[node name="testLevel" parent="." unique_id=1584514048 instance=ExtResource("10_kblmx")]
 
 [connection signal="characterChanged" from="Player" to="UI" method="_on_player_character_changed"]

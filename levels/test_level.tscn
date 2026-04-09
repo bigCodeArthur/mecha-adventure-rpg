@@ -1,46 +1,31 @@
-[gd_scene format=3 uid="uid://bkt7rhc11kewp"]
+[gd_scene format=3 uid="uid://du6symxcubq7t"]
 
-[ext_resource type="Texture2D" uid="uid://b3ooopvvw60nu" path="res://textures/citrus_orchard_puresky_2k.exr" id="1_46lwt"]
+[ext_resource type="PackedScene" uid="uid://bjl0ps38m4flw" path="res://levels/testLevel.gltf" id="1_2f8wm"]
+[ext_resource type="Texture2D" uid="uid://b3ooopvvw60nu" path="res://textures/citrus_orchard_puresky_2k.exr" id="2_qkmfw"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_n3raf"]
-size = Vector2(10, 10)
-orientation = 1
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mdfvn"]
-panorama = ExtResource("1_46lwt")
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_x25rp"]
+panorama = ExtResource("2_qkmfw")
 energy_multiplier = 0.5
 
-[sub_resource type="Sky" id="Sky_qf4ax"]
-sky_material = SubResource("PanoramaSkyMaterial_mdfvn")
+[sub_resource type="Sky" id="Sky_46lwt"]
+sky_material = SubResource("PanoramaSkyMaterial_x25rp")
 
-[sub_resource type="Environment" id="Environment_56muf"]
+[sub_resource type="Environment" id="Environment_gmgay"]
 background_mode = 2
-sky = SubResource("Sky_qf4ax")
+sky = SubResource("Sky_46lwt")
 ssr_enabled = true
 ssao_enabled = true
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_n3raf"]
-
-[node name="TestLevel" type="Node3D" unique_id=1999697223]
+[node name="testLevel" unique_id=1584514048 instance=ExtResource("1_2f8wm")]
+process_mode = 3
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1142256115]
-mesh = SubResource("QuadMesh_n3raf")
-
-[node name="World" type="Node3D" parent="." unique_id=1201214481]
+[node name="World" type="Node3D" parent="." index="3" unique_id=1155737978]
 transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 0, 0, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=222315550]
-environment = SubResource("Environment_56muf")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" index="0" unique_id=382404324]
+environment = SubResource("Environment_gmgay")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=175534547]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" index="1" unique_id=1960682711]
 transform = Transform3D(0.7480298, 0.46928218, -0.46928206, 0, 0.70710677, 0.7071068, 0.6636651, -0.5289369, 0.52893704, 0, 6.756875, 0)
 directional_shadow_blend_splits = true
-
-[node name="Collisions" type="Node3D" parent="." unique_id=1996623478]
-process_mode = 3
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Collisions" unique_id=789969824]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Collisions/StaticBody3D" unique_id=544114226]
-shape = SubResource("WorldBoundaryShape3D_n3raf")

@@ -3,6 +3,7 @@ class_name PlayerUI extends Control
 @export var stick: Stick
 @export var abilities_menu: AbilitiesMenu
 @export var battle_manager: BattleManager
+@export var player: Player
 
 var selectedCharacter : Character
 

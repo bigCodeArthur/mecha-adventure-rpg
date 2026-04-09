@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvp8etmqovc2u"]
+[gd_scene format=3 uid="uid://cvp8etmqovc2u"]
 
 [ext_resource type="Texture2D" uid="uid://kk43kvb4f0r6" path="res://textures/circle-dot-svgrepo-com.svg" id="1_ejdbc"]
 [ext_resource type="Script" uid="uid://cebfbkcm588ja" path="res://ui/scripts/stick.gd" id="1_vs1mt"]
 [ext_resource type="Texture2D" uid="uid://dcajpuedukiqn" path="res://textures/circle-svgrepo-com.svg" id="2_vs1mt"]
 
-[node name="Stick" type="Control"]
+[node name="Stick" type="Control" unique_id=1939925436]
 process_mode = 3
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
@@ -13,7 +13,7 @@ offset_right = 50.0
 offset_bottom = 50.0
 script = ExtResource("1_vs1mt")
 
-[node name="Base" type="TextureRect" parent="."]
+[node name="Base" type="TextureRect" parent="." unique_id=1699672567]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +23,8 @@ grow_vertical = 2
 texture = ExtResource("1_ejdbc")
 expand_mode = 1
 
-[node name="Knob" type="TextureRect" parent="."]
+[node name="Knob" type="TextureRect" parent="." unique_id=1893828015]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4

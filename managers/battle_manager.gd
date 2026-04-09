@@ -20,6 +20,9 @@ func PLAY() -> void:
 
 
 func PAUSE() -> void:
+	for character in allCharacters:
+		if character.actionLock > 0: 
+			character.select()
 	process_mode = Node.PROCESS_MODE_DISABLED
 	# get_tree().paused = true
 
