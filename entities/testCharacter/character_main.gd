@@ -1,4 +1,8 @@
 class_name Character_main extends Character
+## test descriptie.
+##
+## parent of all teams in the scene tree.
+
 
 @onready var direction_indicator = $DirectionIndicator
 @onready var preview = $preview
@@ -19,7 +23,11 @@ func deselect() -> void:
 
 
 func set_active_ability(ability : Ability_resource) -> void:
-	activeAbility = ability
-	actionLock = ability.AnimationFrameLock
-	label_3d.text = str(actionLock)
-	active_ability_indicator.texture = ability.Icon
+	if not ability:
+		activeAbility = null
+		actionLock = 0
+		active_ability_indicator.texture = null
+	else:
+		activeAbility = ability
+		actionLock = ability.AnimationFrameLock
+		active_ability_indicator.texture = ability.Icon

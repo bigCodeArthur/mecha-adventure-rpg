@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://btfh3b3ccmukk"]
+[gd_scene format=3 uid="uid://btfh3b3ccmukk"]
 
 [ext_resource type="Script" uid="uid://da3b1kc3pk8hx" path="res://ui/scripts/ui.gd" id="1_68fm0"]
 [ext_resource type="PackedScene" uid="uid://b05msrpckl12t" path="res://ui/abilities_menu.tscn" id="3_wl5ax"]
 [ext_resource type="PackedScene" uid="uid://cvp8etmqovc2u" path="res://ui/stick.tscn" id="4_07frj"]
 [ext_resource type="Script" uid="uid://cijmuh05hvnnq" path="res://ui/play_button.gd" id="4_vkava"]
 
-[node name="UI" type="Control"]
+[node name="UI" type="Control" unique_id=1232278467 node_paths=PackedStringArray("stick", "abilities_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,8 +14,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_68fm0")
+stick = NodePath("Stick")
+abilities_menu = NodePath("AbilitiesMenu")
 
-[node name="Stick" parent="." instance=ExtResource("4_07frj")]
+[node name="Stick" parent="." unique_id=1575209519 instance=ExtResource("4_07frj")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.82600003
@@ -29,7 +31,7 @@ offset_bottom = 0.12799072
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="AbilitiesMenu" parent="." instance=ExtResource("3_wl5ax")]
+[node name="AbilitiesMenu" parent="." unique_id=1583283907 instance=ExtResource("3_wl5ax")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.20500001
@@ -41,7 +43,7 @@ offset_top = -192.87201
 offset_right = -0.51208496
 offset_bottom = 0.12799072
 
-[node name="Play_button" type="Button" parent="."]
+[node name="Play_button" type="Button" parent="." unique_id=1730096871]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.046000004

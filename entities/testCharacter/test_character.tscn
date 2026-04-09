@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d18g4nxvhsj04" path="res://entities/testCharacter/direction_indicator.gd" id="2_5mie4"]
 [ext_resource type="Script" uid="uid://dyix34w36wall" path="res://entities/testCharacter/preview.gd" id="3_ylme8"]
 [ext_resource type="Script" uid="uid://cad0fqooan566" path="res://entities/testCharacter/infoLabel.gd" id="5_ubvle"]
+[ext_resource type="Script" uid="uid://hpdi0ghaie1a" path="res://entities/testCharacter/selector_area.gd" id="5_y0cm6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tqoyw"]
 radius = 0.25
@@ -37,11 +38,16 @@ height = 1.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqoyw"]
 albedo_color = Color(0.58431375, 1, 1, 0.6392157)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ubvle"]
+radius = 0.31347656
+height = 1.1213379
+
 [node name="Character_template" type="CharacterBody3D" unique_id=298022574]
 collision_layer = 8
 script = ExtResource("1_tqoyw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2059936952]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_tqoyw")
 
@@ -88,3 +94,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4230196, 0)
 billboard = 1
 text = "test"
 script = ExtResource("5_ubvle")
+
+[node name="SelectorArea" type="Area3D" parent="." unique_id=985735255]
+process_mode = 3
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("5_y0cm6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectorArea" unique_id=884184790]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51501465, 0)
+shape = SubResource("CapsuleShape3D_ubvle")

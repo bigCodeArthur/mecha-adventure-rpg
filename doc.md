@@ -1,3 +1,8 @@
+# FIXES
+
+
+
+
 # TODO
 - true ability system
 	- reaction ability IE: parry

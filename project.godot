@@ -51,3 +51,4 @@ cam_move={
 
 3d_physics/layer_1="terrain"
 3d_physics/layer_4="hit box"
+3d_physics/layer_5="select box"

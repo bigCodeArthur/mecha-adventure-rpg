@@ -3,29 +3,34 @@ class_name Player extends Node3D
 var selectedCharacter : Node3D
 var rng = RandomNumberGenerator.new()
 var cam_move : bool = false
+var last_mouse_pos : Vector2
 var MOUSE_SENSITIVITY = 0.005
 
 
-@onready var player_team : Team = $"../TeamManager".get_player_team()
-@onready var ui : Control = $"../UI"
-@onready var battle_manager : BattleManager = $".."
-@onready var cam : Camera3D = %Camera3D
-@onready var ray : RayCast3D = %RayCast3D
+@export var team_manager: TeamManager
+@onready var player_team : Team = team_manager.get_player_team()
+@export var ui: Control
+@export var battle_manager: BattleManager
+@onready var cam: Camera3D = %Camera3D
+@onready var ray: RayCast3D = %RayCast3D
 @onready var pivot: Node3D = $pivot
 
 signal characterChanged(char: Character)
 
 
-func _process(_delta: float) -> void:
-	if Input.is_action_pressed("cam_move"):
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("cam_move"):
+		last_mouse_pos = get_viewport().get_mouse_position()
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		cam_move = true
 	elif Input.is_action_just_released("cam_move"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		cam_move = false
+		Input.warp_mouse(last_mouse_pos)
 
-	var dir := Input.get_vector("left", "right", "forward", "backward")
-	if dir: position += Vector3(dir.x, 0, dir.y) / 3
+	var input_dir := Input.get_vector("left", "right", "forward", "backward")
+	var dir := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if dir: position += dir * delta * 10
 
 	handle_debug_randomizer()
 
@@ -40,9 +45,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		ray.position = from
 		ray.target_position = to
 		ray.force_raycast_update() # because it is a single frame action
-
-		if ray.is_colliding():
-			selectCharacter(selectedCharacter, ray.get_collider())
+		if ray.is_colliding(): 
+			var character = ray.get_collider()
+			if character is Area3D:
+				selectCharacter(selectedCharacter, character.character)
 
 	move_camera(event)
 

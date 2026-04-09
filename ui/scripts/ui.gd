@@ -1,8 +1,8 @@
 class_name PlayerUI extends Control
 
-@onready var stick: Stick = $Stick
-@onready var abilities_menu: AbilitiesMenu = $AbilitiesMenu
-@onready var battle_manager: BattleManager = get_owner()
+@export var stick: Stick
+@export var abilities_menu: AbilitiesMenu
+@export var battle_manager: BattleManager
 
 var selectedCharacter : Character
 

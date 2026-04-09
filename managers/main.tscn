@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cnmdwn5j70ujc"]
+
+[ext_resource type="Script" uid="uid://b3oo6fjep1pjh" path="res://managers/battle_manager.gd" id="1_kblmx"]
+[ext_resource type="Script" uid="uid://2xeajflmspl3" path="res://managers/team_manager.gd" id="2_62apu"]
+[ext_resource type="Script" uid="uid://db45imyihyq6n" path="res://managers/team.gd" id="3_rwidm"]
+[ext_resource type="PackedScene" uid="uid://5ogm0nrdtmlj" path="res://entities/testCharacter/test_character.tscn" id="4_u8kuq"]
+[ext_resource type="Script" uid="uid://bnm4hv6ov5wib" path="res://resources/abilities/abilityResource.gd" id="5_cvxjk"]
+[ext_resource type="Resource" uid="uid://cj5nmhip05tv6" path="res://resources/abilities/walk.tres" id="6_svw6b"]
+[ext_resource type="Resource" uid="uid://du0afwkbfk1fy" path="res://resources/abilities/sneak.tres" id="7_dyqx8"]
+[ext_resource type="PackedScene" uid="uid://bkt7rhc11kewp" path="res://levels/test_level.tscn" id="8_they0"]
+[ext_resource type="PackedScene" uid="uid://btfh3b3ccmukk" path="res://ui/ui.tscn" id="9_r1lk3"]
+[ext_resource type="PackedScene" uid="uid://bsqhu3665r1yi" path="res://entities/PlayerController/player.tscn" id="10_oia7y"]
+
+[node name="Main" type="Node" unique_id=422167773]
+
+[node name="Battle_manager" type="Node3D" parent="." unique_id=1537054888 node_paths=PackedStringArray("player", "teamManager", "ui")]
+script = ExtResource("1_kblmx")
+player = NodePath("../Player")
+teamManager = NodePath("TeamManager")
+ui = NodePath("../UI")
+
+[node name="TeamManager" type="Node3D" parent="Battle_manager" unique_id=1545546149]
+script = ExtResource("2_62apu")
+
+[node name="Team1" type="Node3D" parent="Battle_manager/TeamManager" unique_id=304253796]
+script = ExtResource("3_rwidm")
+
+[node name="testCharacter3" parent="Battle_manager/TeamManager/Team1" unique_id=194980635 instance=ExtResource("4_u8kuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68109024, -7.1525574e-07, 3.131794)
+abilities = Array[ExtResource("5_cvxjk")]([ExtResource("6_svw6b")])
+
+[node name="testCharacter4" parent="Battle_manager/TeamManager/Team1" unique_id=1561422959 instance=ExtResource("4_u8kuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78513014, 0, 3.2357912)
+abilities = Array[ExtResource("5_cvxjk")]([ExtResource("6_svw6b"), ExtResource("7_dyqx8")])
+
+[node name="Team2" type="Node3D" parent="Battle_manager/TeamManager" unique_id=1158894396]
+script = ExtResource("3_rwidm")
+team_color = Color(0.5286221, 0, 0.053964145, 1)
+
+[node name="testCharacter3" parent="Battle_manager/TeamManager/Team2" unique_id=640019476 instance=ExtResource("4_u8kuq")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.750656, -7.1525574e-07, -2.8320951)
+abilities = Array[ExtResource("5_cvxjk")]([ExtResource("6_svw6b")])
+
+[node name="testCharacter4" parent="Battle_manager/TeamManager/Team2" unique_id=1553197541 instance=ExtResource("4_u8kuq")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.71556437, 0, -2.9360926)
+abilities = Array[ExtResource("5_cvxjk")]([ExtResource("6_svw6b"), ExtResource("7_dyqx8")])
+
+[node name="TestLevel" parent="Battle_manager" unique_id=598110411 instance=ExtResource("8_they0")]
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 0, 0)
+
+[node name="UI" parent="." unique_id=302698178 node_paths=PackedStringArray("battle_manager") instance=ExtResource("9_r1lk3")]
+battle_manager = NodePath("../Battle_manager")
+
+[node name="Player" parent="." unique_id=1189490327 node_paths=PackedStringArray("team_manager", "ui", "battle_manager") instance=ExtResource("10_oia7y")]
+process_mode = 0
+team_manager = NodePath("../Battle_manager/TeamManager")
+ui = NodePath("../UI")
+battle_manager = NodePath("../Battle_manager")
+
+[connection signal="characterChanged" from="Player" to="UI" method="_on_player_character_changed"]
