@@ -17,14 +17,11 @@ func set_color(color: Color):
 
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	if not activeAbility:
-		return
-
-	if target_direction == Vector2.ZERO:
-		return
+	if not is_on_floor(): velocity += get_gravity() * delta
+	if not activeAbility: return
+	if actionLock == activeAbility.AnimationFrameLock - 1 and is_on_floor():
+		velocity.y = activeAbility.JumpPower
+	if target_direction == Vector2.ZERO: return
 
 	var target_angle = target_direction.normalized().angle() - PI / 2
 	var angle_wrapped = wrapf(target_angle + rotation.y, -PI, PI)

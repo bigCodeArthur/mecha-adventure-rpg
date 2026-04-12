@@ -12,16 +12,16 @@ sky_material = SubResource("PanoramaSkyMaterial_x25rp")
 
 [sub_resource type="Environment" id="Environment_gmgay"]
 background_mode = 2
+background_energy_multiplier = 0.3
 sky = SubResource("Sky_46lwt")
-ssr_enabled = true
 ssao_enabled = true
+glow_enabled = true
 
-[node name="testLevel" unique_id=1584514048 instance=ExtResource("1_2f8wm")]
+[node name="testLevel" unique_id=1212809943 instance=ExtResource("1_2f8wm")]
 process_mode = 3
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="World" type="Node3D" parent="." index="3" unique_id=1155737978]
-transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, 0, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World" index="0" unique_id=382404324]
 environment = SubResource("Environment_gmgay")
@@ -29,3 +29,9 @@ environment = SubResource("Environment_gmgay")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" index="1" unique_id=1960682711]
 transform = Transform3D(0.7480298, 0.46928218, -0.46928206, 0, 0.70710677, 0.7071068, 0.6636651, -0.5289369, 0.52893704, 0, 6.756875, 0)
 directional_shadow_blend_splits = true
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="World" index="2" unique_id=1066106196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13195786, 0.5623903, 0.1187429)
+size = Vector3(23.08667, 20, 36.52838)
+enable_shadows = true
+cull_mask = 1048573

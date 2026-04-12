@@ -1,14 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b05msrpckl12t"]
+[gd_scene format=3 uid="uid://b05msrpckl12t"]
 
 [ext_resource type="Script" uid="uid://buoxuwyuvd8dj" path="res://ui/scripts/abilities_menu.gd" id="1_d5nv5"]
 
-[node name="Control" type="Control"]
+[node name="AbilitiesMenus" type="Control" unique_id=82884578]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
 script = ExtResource("1_d5nv5")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=512133670]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 15
@@ -17,7 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FlowContainer" type="HFlowContainer" parent="ScrollContainer"]
+[node name="FlowContainer" type="HFlowContainer" parent="ScrollContainer" unique_id=1783869127]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

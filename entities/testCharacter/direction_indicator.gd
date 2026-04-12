@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 
 	var target_direction = Vector3(
 		body.target_direction.x,
-		global_position.y,
+		position.y,
 		body.target_direction.y
 	)
 

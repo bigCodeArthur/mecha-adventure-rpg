@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Ability_resource" format=3 uid="uid://drnakms4scp2n"]
+
+[ext_resource type="Texture2D" uid="uid://w2076j4mkane" path="res://icon.svg" id="1_gj3qf"]
+[ext_resource type="Script" uid="uid://bnm4hv6ov5wib" path="res://resources/abilities/abilityResource.gd" id="2_rj2y3"]
+
+[resource]
+script = ExtResource("2_rj2y3")
+Name = "run"
+Icon = ExtResource("1_gj3qf")
+Indicator = ExtResource("1_gj3qf")
+MoveSpeed = 8.0
+JumpPower = 6.0
+AnimationFrameLock = 15
+metadata/_custom_type_script = "uid://bnm4hv6ov5wib"

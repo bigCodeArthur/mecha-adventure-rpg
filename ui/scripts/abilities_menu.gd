@@ -8,11 +8,6 @@ const BUTTON = preload("uid://bf0171xrtjenr")
 
 signal abilityChanged(ability: Ability_resource)
 
-
-func _ready() -> void:
-	pass
-
-
 func character_changed(character: Character) -> void:
 	for child in abilities.get_children():
 		child.queue_free()

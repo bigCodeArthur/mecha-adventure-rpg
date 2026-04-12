@@ -3,7 +3,6 @@ class_name Preview extends Character
 @onready var main : Character_main = $".."
 
 var frameToReset : int
-var frame : int = 0
 
 
 func reset() -> void:
@@ -15,11 +14,11 @@ func reset() -> void:
 	target_direction = main.target_direction
 	speedStrength    = main.speedStrength
 
-	frame = 0
-	if activeAbility: frameToReset = activeAbility.AnimationFrameLock
+	if activeAbility: actionLock = activeAbility.AnimationFrameLock
+	frameToReset = 0
 
 
 func _physics_process(delta: float) -> void:
-	if frame >= frameToReset: reset()
-	else: frame += 1
+	if actionLock <= 0: reset()
+	else: actionLock -= 1
 	super(delta)

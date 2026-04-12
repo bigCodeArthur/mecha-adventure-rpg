@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Ability_resource" format=3 uid="uid://b1fevs0mon758"]
+
+[ext_resource type="Texture2D" uid="uid://w2076j4mkane" path="res://icon.svg" id="1_gt6v2"]
+[ext_resource type="Script" uid="uid://bnm4hv6ov5wib" path="res://resources/abilities/abilityResource.gd" id="2_miab8"]
+
+[resource]
+script = ExtResource("2_miab8")
+Name = "test"
+Icon = ExtResource("1_gt6v2")
+Indicator = ExtResource("1_gt6v2")
+PlayAnimation = "test"
+metadata/_custom_type_script = "uid://bnm4hv6ov5wib"

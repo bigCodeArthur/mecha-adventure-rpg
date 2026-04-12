@@ -16,19 +16,18 @@ func PLAY() -> void:
 	player.deselect()
 	ui.stick.reset()
 	process_mode = Node.PROCESS_MODE_INHERIT
-	# get_tree().paused = false
 
 
 func PAUSE() -> void:
 	for character in allCharacters:
 		if character.actionLock > 0: 
 			character.select()
+	player.selectCharacter(player.player_team.get_first_character())
 	process_mode = Node.PROCESS_MODE_DISABLED
-	# get_tree().paused = true
 
 
 func _ready() -> void:
-	PAUSE()
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _physics_process(_delta: float) -> void:
@@ -39,7 +38,7 @@ func _physics_process(_delta: float) -> void:
 		if  character.actionLock <= 0:
 			unlockedCharacters.append(character)
 			character.set_active_ability(null)
-		
+
 	if len(unlockedCharacters) > 0:
 		PAUSE()
 	else:
