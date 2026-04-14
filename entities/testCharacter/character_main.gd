@@ -3,7 +3,7 @@ class_name Character_main extends Character
 ##
 ## parent of all teams in the scene tree.
 
-
+@onready var team = $".."
 @onready var direction_indicator = $DirectionIndicator
 @onready var preview = $preview
 @onready var active_ability_indicator = $ActiveAbilityIndicator

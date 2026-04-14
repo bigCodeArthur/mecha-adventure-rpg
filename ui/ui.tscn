@@ -40,7 +40,7 @@ anchor_right = 0.80600005
 anchor_bottom = 0.989
 offset_left = -0.16001892
 offset_top = -192.87201
-offset_right = -0.51208496
+offset_right = 0.48791504
 offset_bottom = 0.12799072
 
 [node name="Play_button" type="Button" parent="." unique_id=1730096871]

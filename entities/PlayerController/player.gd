@@ -83,7 +83,9 @@ func move_camera(event: InputEvent):
 
 
 func selectCharacter(character: Character, prev_character: Character = selectedCharacter) ->void:
-	if character is not Character and character != null: return
+	if character is not Character: return
+	if character == null: return
+	if character.team != player_team: return
 	if prev_character == character: return
 	if prev_character != null: prev_character.deselect()
 
